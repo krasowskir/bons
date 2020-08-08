@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.NoResultException;
+import java.util.UUID;
+
 @Service
 public class AddressService {
 
@@ -29,5 +32,12 @@ public class AddressService {
         Address addressToStore = new Address(tmpAddress.getFirstName(),tmpAddress.getLastName(),tmpAddress.getStreet(),
                 tmpAddress.getPostCode(),tmpAddress.getCity(),tmpAddress.getTelephoneNumber());
         return addressRepository.save(addressToStore);
+    }
+
+    public Address findAddress(UUID id){
+        if (addressRepository.findById(id).isPresent()){
+            throw new NoResultException();
+        }
+        return addressRepository.findById(id).get();
     }
 }
