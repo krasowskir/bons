@@ -21,9 +21,9 @@ public class CustomerExportService {
     Logger LOGGER = LoggerFactory.getLogger(CustomerExportService.class);
 
     @Transactional
-    public boolean exportAddress(AddressDTO addressToStore) {
+    public boolean exportAddress(AddressDTO addressToStore) throws InterruptedException {
         LOGGER.debug("enter exportAddress");
-        addressService.storeAddres(addressToStore);
+        addressService.storeAddress(addressToStore);
         LOGGER.debug("stored addressToStore {}", addressToStore);
         ResponseEntity<String> response = template.postForEntity("http://localhost:8080/order-place/finishOrders", addressToStore, String.class);
         return response.getStatusCode().is2xxSuccessful();
