@@ -7,7 +7,6 @@ import java.util.UUID;
 @Data
 public class AddressDTO {
 
-    private UUID id;
     private String firstName;
     private String lastName;
     private String street;
@@ -16,7 +15,6 @@ public class AddressDTO {
     private String telephoneNumber;
 
     public AddressDTO(String firstName, String lastName, String street, String postCode, String city, String telephoneNumber){
-        this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -25,7 +23,5 @@ public class AddressDTO {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public AddressDTO() {
-        this.id = UUID.randomUUID();
-    }
+    public AddressDTO() { }
 }

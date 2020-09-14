@@ -1,0 +1,29 @@
+= Sample API Documentation
+Richard Krasowski <richard.krasowski@mytoys.de>
+v0.1, September 8, 2020: erste Version
+:toc: left
+:toclevels: 3
+:page-layout: html
+
+== Introduction
+This is the API for addresses
+
+=== For creating of the addresses
+include::{snippets}/create-address/http-request.adoc[]
+
+as a request parameter you should provide a valid address.
+include::{snippets}/create-address/request-fields.adoc[]
+
+=== Address Response
+include::{snippets}/create-address/http-response.adoc[]
+include::{snippets}/create-address/response-body.adoc[]
+
+
+
+=== Fetching Addresses
+==== CURL example
+include::{snippets}/index/http-request.adoc[]
+
+==== response
+include::{snippets}/index/http-response.adoc[]
+
