@@ -1,17 +1,22 @@
 package com.example.bons.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.rest.core.annotation.RestResource;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "petrolstation")
+@Builder
+@AllArgsConstructor
 public class PetrolStation {
 
     @Id
-    private String id;
+    private UUID id;
     private String name;
 
     @OneToOne
@@ -24,4 +29,7 @@ public class PetrolStation {
     private String StNr;
     private String USTIdentNr;
 
+    public PetrolStation(){
+        this.id = UUID.randomUUID();
+    }
 }

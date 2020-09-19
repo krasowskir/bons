@@ -161,7 +161,7 @@
 					<execution>
 						<phase>integration-test</phase>
 						<goals>
-							<goal>verify</goal>
+							<goal>integration-test</goal>
 						</goals>
 					</execution>
 				</executions>

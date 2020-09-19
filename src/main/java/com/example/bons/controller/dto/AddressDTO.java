@@ -2,8 +2,6 @@ package com.example.bons.controller.dto;
 
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 public class AddressDTO {
 

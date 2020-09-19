@@ -79,6 +79,11 @@ public class Address {
         this.telephoneNumber = telephoneNumber;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

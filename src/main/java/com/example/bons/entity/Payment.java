@@ -10,11 +10,11 @@ import java.sql.Date;
 import java.util.UUID;
 
 @Data
-@Entity
+//@Entity
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
     private PaymentMethod method;
@@ -25,7 +25,7 @@ public class Payment {
     private String appId;
 
     private enum PaymentMethod {
-        GIROCARD
+        CREDITCARD, PAYPAL, SOFORTUEBERWEISUNG, INVOICE, DEBIT, RATE
     }
 
 }
