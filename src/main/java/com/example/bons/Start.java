@@ -38,9 +38,7 @@ public class Start {
         Address lidiaBerlAddress = new Address(2,"lidia", "krasowski", "Düsseldorfer Straße 59", "10707", "Berlin", "0171202555483");
         session.save(berlinAddress);
         session.save(lidiaBerlAddress);
-//        firstTrans.commit();
-//        session.getTransaction().commit();
-        session.flush();
+        session.getTransaction().commit();
         session.close();
     }
 }
