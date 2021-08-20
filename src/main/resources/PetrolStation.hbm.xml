@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTG"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.bons.entity.PetrolStation"  table="petrol_stations">
+
+        <id name="id" column="id" type="long">
+            <generator class="sequence"/>
+        </id>
+
+        <property name="name" column="name"/>
+        <property name="telephone" column="telephone" />
+        <property name="taxIdentificationNumberOfStation" column="tax_identification_number_of_station" />
+        <property name="taxIdentificationNumberOfCompany" column="tax_identification_number_of_company" />
+        <property name="bonNumber" column="bon_number" />
+        <property name="stNr" column="st_nr" />
+        <property name="uSTIdentNr" column="u_st_ident_nr" />
+
+        <one-to-one name="address"/>
+
+    </class>
+</hibernate-mapping>

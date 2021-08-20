@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTG"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.bons.entity.Bon"  table="bons">
+
+        <id name="id" column="id" type="long">
+            <generator class="sequence"/>
+        </id>
+
+        <property name="taxExtraCharge" column="tax_extra_charge" />
+        <property name="totalAmount" column="total_amount" />
+        <property name="bruttoPrice" column="brutto_price" />
+        <property name="nettoPrice" column="netto_price" />
+        <property name="petrolAmount" column="petrol_amount" />
+        <property name="petrolPrice" column="petrol_price" />
+
+        <many-to-one name="petrolStation"
+                     cascade="all"
+                     column="petrol_station"
+                     foreign-key="FK_PETROL_STATION"/>
+
+        <many-to-one name="payment"
+                     cascade="all"
+                     column="payment"/>
+
+    </class>
+</hibernate-mapping>

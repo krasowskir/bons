@@ -5,8 +5,11 @@
 <hibernate-mapping>
     <class name="com.example.bons.entity.Address"  table="address">
 
-        <id name="id" column="id" type="int">
-            <generator class="increment"/>
+<!--        <id name="id" column="id" type="int">-->
+<!--            <generator class="increment"/>-->
+<!--        </id>-->
+        <id name="id" column="id" type="long">
+            <generator class="sequence"/>
         </id>
 
         <property name="firstName" column="first_name"/>

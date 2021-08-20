@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionManager;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 
 @Component
@@ -40,5 +41,12 @@ public class Start {
         session.save(lidiaBerlAddress);
         session.getTransaction().commit();
         session.close();
+
+        Session lookupSession = sessionFactory.openSession();
+        Transaction lookup = lookupSession.beginTransaction();
+        List<Address> addresses = lookupSession.createQuery("from Address a order by a.firstName asc",Address.class).list();
+        lookup.commit();
+        lookupSession.close();
+        addresses.forEach(System.out::println);
     }
 }

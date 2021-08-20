@@ -29,6 +29,9 @@ public class MyConfig {
     public SessionFactory localSessionFactoryBean(DataSource dataSource) {
         return new LocalSessionFactoryBuilder(dataSource)
                 .addResource("Address.hbm.xml")
+                .addResource("Bon.hbm.xml")
+                .addResource("Payment.hbm.xml")
+                .addResource("PetrolStation.hbm.xml")
                 .configure() //zeigt per default auf hibernate.cfg.xml im classpath
                 .buildSessionFactory();
     }

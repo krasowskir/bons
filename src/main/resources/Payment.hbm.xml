@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTG"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.bons.entity.Payment"  table="payments">
+
+        <id name="id" column="id" type="long">
+            <generator class="sequence"/>
+        </id>
+
+        <property name="method" column="payment_method"/>
+        <property name="datum" column="datum" />
+        <property name="termId" column="term_id" />
+        <property name="proessNr" column="proess_nr" />
+        <property name="kontoNr" column="konto_nr" />
+        <property name="appId" column="app_id" />
+
+    </class>
+</hibernate-mapping>

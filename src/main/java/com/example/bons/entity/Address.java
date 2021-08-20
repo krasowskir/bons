@@ -1,15 +1,10 @@
 package com.example.bons.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Objects;
 
 public class Address {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
     private String street;
@@ -17,8 +12,9 @@ public class Address {
     private String city;
     private String telephoneNumber;
 
+    public Address() { }
 
-    public Address(int id, String firstName, String lastName, String street, String postCode, String city, String telephoneNumber) {
+    public Address(long id, String firstName, String lastName, String street, String postCode, String city, String telephoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,11 +24,11 @@ public class Address {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
