@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTG"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.bons.entity.Address"  table="address">
+
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+
+        <property name="firstName" column="first_name"/>
+        <property name="lastName" column="last_name" />
+        <property name="street" column="street" />
+        <property name="postCode" column="post_code" />
+        <property name="city" column="city" />
+        <property name="telephoneNumber" column="telephone_number" />
+
+    </class>
+</hibernate-mapping>

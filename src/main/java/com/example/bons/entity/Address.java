@@ -1,15 +1,16 @@
 package com.example.bons.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
-import java.util.UUID;
 
-@Entity
+//@Entity
 public class Address {
 
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String firstName;
     private String lastName;
     private String street;
@@ -17,18 +18,23 @@ public class Address {
     private String city;
     private String telephoneNumber;
 
-    public Address() {
-        this.id = UUID.randomUUID();
-    }
 
-    public Address(String firstName, String lastName, String street, String postCode, String city, String telephoneNumber) {
-        this.id = UUID.randomUUID();
+    public Address(int id, String firstName, String lastName, String street, String postCode, String city, String telephoneNumber) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
         this.postCode = postCode;
         this.city = city;
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -79,23 +85,18 @@ public class Address {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return id.equals(address.id) &&
-                firstName.equals(address.firstName) &&
-                lastName.equals(address.lastName) &&
-                street.equals(address.street) &&
-                postCode.equals(address.postCode) &&
-                city.equals(address.city) &&
-                telephoneNumber.equals(address.telephoneNumber);
+        return id == address.id &&
+                Objects.equals(firstName, address.firstName) &&
+                Objects.equals(lastName, address.lastName) &&
+                Objects.equals(street, address.street) &&
+                Objects.equals(postCode, address.postCode) &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(telephoneNumber, address.telephoneNumber);
     }
 
     @Override
@@ -106,7 +107,7 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "id=" + id +
+                "myId=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", street='" + street + '\'' +

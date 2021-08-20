@@ -6,6 +6,7 @@ spring:
     hibernate:
       ddl-auto: create-drop
   datasource:
+    initialization-mode: always
     url: jdbc:postgresql://localhost:5432/bondb #jdbc:postgresql://localhost:5432/bondb
     username: richard
     password: test123
@@ -20,5 +21,10 @@ security:
 management:
   security:
     enabled: false
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate: TRACE
 
 
