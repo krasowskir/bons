@@ -5,9 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 
 import javax.sql.DataSource;
 
@@ -15,7 +14,7 @@ import javax.sql.DataSource;
 public class MyConfig {
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         DataSourceBuilder builder = DataSourceBuilder.create()
                 .type(com.zaxxer.hikari.HikariDataSource.class)
                 .driverClassName("org.postgresql.Driver")
@@ -25,19 +24,18 @@ public class MyConfig {
         return builder.build();
     }
 
-    @Bean(name = "sessionFactory")
+    @Bean
     @Autowired
-    public LocalSessionFactoryBean localSessionFactoryBean(DataSource dataSource){
-        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-        localSessionFactoryBean.setDataSource(dataSource);
-        localSessionFactoryBean.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
-        localSessionFactoryBean.setMappingResources("Address.hbm.xml");
-        return localSessionFactoryBean;
+    public SessionFactory localSessionFactoryBean(DataSource dataSource) {
+        return new LocalSessionFactoryBuilder(dataSource)
+                .addResource("Address.hbm.xml")
+                .configure() //zeigt per default auf hibernate.cfg.xml im classpath
+                .buildSessionFactory();
     }
 
     @Bean
     @Autowired
-    public HibernateTransactionManager hibernateTransactionmanager(SessionFactory sessionFactory){
+    public HibernateTransactionManager hibernateTransactionmanager(SessionFactory sessionFactory) {
         return new HibernateTransactionManager(sessionFactory);
     }
 }
